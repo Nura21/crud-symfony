@@ -1,0 +1,38 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: left;
+    }
+</style>
+
+<h1>All Carts</h1>
+
+{% if carts is not empty %}
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Market</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cart in carts %}
+            <tr>
+                <td>{{ cart.getTitle() }}</td>
+                <td>{{ cart.getMarketName() }}</td>
+                <td>{{ cart.getDescription() }}</td>
+                <td><a href="/delete-cart/{{ cart.id }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No cart found.</p>
+{% endif %}
+
+<br/>
+
+<a href="/show-articles">My Product</a>
